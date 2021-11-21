@@ -5,7 +5,7 @@ from alunos.models.models_turmas import Turmas
 
 class PeopleAdmin(admin.ModelAdmin):
     list_display = ('name', 'date_insc', 'email', 'active')
-    search_fields = ['name', 'tel1']
+    search_fields = ['name', 'tel1', 'active']
 
 
 class TurmasAdmin(admin.ModelAdmin):
