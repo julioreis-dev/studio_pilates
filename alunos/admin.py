@@ -11,6 +11,7 @@ class PeopleAdmin(admin.ModelAdmin):
 class TurmasAdmin(admin.ModelAdmin):
     list_display = ('day', 'schedule')
     search_fields = ['day', 'schedule']
+    filter_horizontal = ('alunos',)
 
 
 admin.site.register(People, PeopleAdmin)
