@@ -5,7 +5,7 @@ from alunos.models import DAY_CHOICE, SCHEDULE_CHOICE, People
 class Turmas(models.Model):
     day = models.CharField(choices=DAY_CHOICE, max_length=20, default='segunda-feira', verbose_name='Dia')
     schedule = models.CharField(choices=SCHEDULE_CHOICE, max_length=2, default='m1', verbose_name='Horário')
-    alunos = models.ManyToManyField(People, blank=True, help_text='Escolha os alunos da turmaprofessores e transfira para a tabela da direita.')
+    alunos = models.ManyToManyField(People, blank=True, help_text='Escolha os alunos da turma e transfira para a tabela da direita.')
 
     def __str__(self):
         return f'{self.day} / {self.schedule}'
