@@ -25,5 +25,11 @@ SCHEDULE_CHOICE = [
      ),
 ]
 
+STATUS_CHOICE = (
+    ('ativo', 'Ativo'),
+    ('inativo', 'Inativo'),
+)
+
+
 from .models_alunos import *
 from .models_turmas import *
