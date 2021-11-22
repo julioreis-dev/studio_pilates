@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.timezone import now
-from alunos.models import DAY_CHOICE, SCHEDULE_CHOICE
+from alunos.models import DAY_CHOICE, SCHEDULE_CHOICE, STATUS_CHOICE
 
 
 class People(models.Model):
@@ -17,8 +17,7 @@ class People(models.Model):
     insta = models.CharField(max_length=150, blank=True, verbose_name='Instagram')
     day = models.CharField(choices=DAY_CHOICE, max_length=20, default='segunda-feira', verbose_name='Dia')
     schedule = models.CharField(choices=SCHEDULE_CHOICE, max_length=2, default='m1', verbose_name='Horário')
-    # schedule2 = models.IntegerField(choices=SCHEDULE_CHOICE, default=1, verbose_name='Horário (2)', help_text="Horário de aula")
-    active = models.BooleanField(verbose_name='Aluno ativo', default=False)
+    status = models.CharField(choices=STATUS_CHOICE, default='ativo', max_length=7)
 
     def __str__(self):
         return f'{self.name}'
