@@ -9,17 +9,14 @@ class Turmas(models.Model):
                                                                   'tabela da direita.')
 
     def total(self):
-        tot = self.alunos.count()
-        disp = 3 - tot
-        if disp == 1:
-            return f'Disponível {disp} vaga.'
-        elif 1 < disp <= 3:
-            return f'Disponíveis {disp} vagas.'
+        number_student = self.alunos.count()
+        disp = 3 - number_student
+        if 0 < disp <= 3:
+            return f'Disponível {disp} vaga(s)'
         elif disp < 0:
             return f'Turma com excedente de {abs(disp)} aluno(s)'
         else:
             return 'Turma completa'
-        # return f'Disponível {3-tot} vaga(s).' if tot < 3 else 'Turma completa'
 
     def __str__(self):
         return f'{self.day} / {self.schedule}'
