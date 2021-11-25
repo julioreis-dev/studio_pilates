@@ -19,6 +19,25 @@ class People(models.Model):
     schedule = models.CharField(choices=SCHEDULE_CHOICE, max_length=2, default='m1', verbose_name='Horário')
     status = models.CharField(choices=STATUS_CHOICE, default='ativo', max_length=7)
 
+    def day_schedules(self):
+        p = People.objects.all()
+        t = p.filter(name=self.name)
+        correto_day = t[0].day
+        correto_sched = t[0].schedule
+        z = t[0].turmas_set.all()
+        if len(z) > 1:
+            return 'Aluno em mais de uma turma'
+        else:
+            if z.exists():
+                correto_day_turma = z.values_list('day').first()
+                correto_sched_turma = z.values_list('schedule').first()
+                if correto_day == correto_day_turma[0] and correto_sched == correto_sched_turma[0]:
+                    return 'Alocado corretamente'
+                else:
+                    return 'Turma trocada'
+            else:
+                return 'Aluno sem turma'
+
     def __str__(self):
         return f'{self.name}'
 

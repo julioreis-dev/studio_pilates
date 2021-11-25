@@ -4,8 +4,10 @@ from alunos.models.models_turmas import Turmas
 
 
 class PeopleAdmin(admin.ModelAdmin):
-    list_display = ('name', 'date_insc', 'email', 'status')
+    list_display = ('name', 'date_insc', 'email', 'day_schedules', 'status')
     search_fields = ['name', 'tel1', 'status']
+
+    People.day_schedules.short_description = 'Alocação'
 
 
 class TurmasAdmin(admin.ModelAdmin):
