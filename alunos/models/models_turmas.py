@@ -19,7 +19,6 @@ class Turmas(models.Model):
             return f'Turma com excedente de {abs(disp)} aluno(s)'
         else:
             return 'Turma completa'
-
         # return f'Disponível {3-tot} vaga(s).' if tot < 3 else 'Turma completa'
 
     def __str__(self):
