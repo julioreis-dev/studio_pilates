@@ -9,9 +9,11 @@ class PeopleAdmin(admin.ModelAdmin):
 
 
 class TurmasAdmin(admin.ModelAdmin):
-    list_display = ('day', 'schedule')
-    search_fields = ['day', 'schedule']
+    list_display = ('day', 'schedule', 'total')
+    search_fields = ['day', 'schedule', 'alunos__name']
     filter_horizontal = ('alunos',)
+
+    Turmas.total.short_description = 'Disponibilidade'
 
 
 admin.site.register(People, PeopleAdmin)
