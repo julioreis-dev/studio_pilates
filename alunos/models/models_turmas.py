@@ -14,9 +14,9 @@ class Turmas(models.Model):
         if disp == 1:
             return f'Disponível {disp} vaga.'
         elif 1 < disp <= 3:
-            return f'Disponível {disp} vagas.'
+            return f'Disponíveis {disp} vagas.'
         elif disp < 0:
-            return 'Turma com excedente'
+            return f'Turma com excedente de {abs(disp)} aluno(s)'
         else:
             return 'Turma completa'
 
