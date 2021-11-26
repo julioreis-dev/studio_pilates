@@ -30,6 +30,24 @@ STATUS_CHOICE = (
     ('inativo', 'Inativo'),
 )
 
+MONTH_CHOICE = (
+    ('janeiro', 'Janeiro'),
+    ('fevereiro', 'Fevereiro'),
+    ('março', 'Março'),
+    ('abril', 'Abril'),
+    ('maio', 'Maio'),
+    ('junho', 'Junho'),
+    ('julho', 'Julho'),
+    ('agosto', 'Agosto'),
+    ('setembro', 'Setembro'),
+    ('outubro', 'Outubro'),
+    ('novembro', 'Novembro'),
+    ('dezembro', 'Dezembro'),
+)
+
+
 
 from .models_alunos import *
 from .models_turmas import *
+from .models_boleto import *
+from .models_pagamentos import *
