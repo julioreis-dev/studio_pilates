@@ -7,7 +7,7 @@ class PeopleAdmin(admin.ModelAdmin):
     list_display = ('name', 'date_insc', 'email', 'day_schedules', 'status')
     search_fields = ['name', 'tel1', 'status']
 
-    People.day_schedules.short_description = 'Alocação'
+    People.day_schedules.short_description = 'Status Alocação'
 
 
 class TurmasAdmin(admin.ModelAdmin):
