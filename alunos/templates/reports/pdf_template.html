@@ -1,0 +1,64 @@
+
+<html>
+<head>
+  <title>{{ obj.boletim.name }}</title>
+  <style>
+    body {
+      background-color: #f7f7f7;
+      font-size: 10px;
+    }
+    p {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .text-left {
+      text-align: left;
+    }
+    table, td, th {
+    border: 1px solid black;
+    }
+    table {
+        border-collapse: collapse;
+        width: 80%;
+    }
+    th {
+        height: 40px;
+    }
+    td {
+    padding: 15px;
+    height: 80px;
+    vertical-align: bottom;
+    }
+  </style>
+</head>
+  <body>
+    <h1 class="text-center">Espaço Juliana Pessoa - Pilates & Fisioterapia Pélvica</h1>
+    <h1 class="text-center">Relatório Financeiro do aluno(a) {{ obj.people }} referente ao ano {{ obj.ano }}.</h1>
+    <hr>
+    <h1>Relação de Pagamentos:</h1>
+      <table border="1">
+        <tr>
+          <th scope="col">Mês</th>
+          <th scope="col">Valor</th>
+          <th scope="col">Status</th>
+        </tr>
+      <tbody>
+      {% for info in infos %}
+        <tr>
+          <td class="text-center">{{ info.month }}</td>
+          <td class="text-center">{{ info.val }}</td>
+          {% if info.pay == False %}
+          <td class="text-center">Pagamento não realizado</td>
+          {% else %}
+          <td class="text-center">Pago</td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+      </tbody>
+      </table>
+    <h1 class="text-right">Emitido em: {{ schedule }}</h1>
+  </body>
+</html>

@@ -1,6 +1,5 @@
 from django.db import models
 from alunos.models.models_alunos import People
-
 import datetime
 
 year = datetime.date.today().year
