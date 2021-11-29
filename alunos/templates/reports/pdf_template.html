@@ -25,9 +25,11 @@
         width: 80%;
     }
     th {
+        font-size: 12px;
         height: 40px;
     }
     td {
+    font-size: 12px;
     padding: 15px;
     height: 80px;
     vertical-align: bottom;
@@ -48,7 +50,7 @@
       <tbody>
       {% for info in infos %}
         <tr>
-          <td class="text-center">{{ info.month }}</td>
+          <td class="text-center">{{ info.month|capfirst }}</td>
           <td class="text-center">{{ info.val }}</td>
           {% if info.pay == False %}
           <td class="text-center">Pagamento não realizado</td>
