@@ -59,8 +59,8 @@ class BillsAdmin(DjangoObjectActions, admin.ModelAdmin):
 
 
 class PaymentsAdmin(DjangoObjectActions, admin.ModelAdmin):
-    list_display = ('boletim', 'invoice', 'month', 'month_db')
-    search_fields = ('boletim__people__name', 'boletim__ano', 'month', 'id')
+    list_display = ('boletim', 'invoice', 'month', 'month_db', 'pay')
+    search_fields = ('boletim__people__name', 'boletim__ano', 'month', 'id', 'pay')
 
     Payments.month_db.short_description = 'Ano'
     Payments.invoice.short_description = 'Nº Recibo'
@@ -74,14 +74,10 @@ class PaymentsAdmin(DjangoObjectActions, admin.ModelAdmin):
         html = template.render(context)
         # create a pdf
         pisa_status = pisa.CreatePDF(html, dest=response)
+        return HttpResponse('We had some errors <pre>' + html + '</pre>') if pisa_status.err else response
 
-        # if error then show some funy view
-        if pisa_status.err:
-            return HttpResponse('We had some errors <pre>' + html + '</pre>')
-        return response
-
-    generate_pdf_payments.label = 'Gerar Relatório'
-    generate_pdf_payments.short_description = 'Clique para gerar o PDF do relatório desse aluno'
+    generate_pdf_payments.label = 'Gerar Recibo'
+    generate_pdf_payments.short_description = 'Clique para gerar o recibo em PDF do referido aluno'
 
     change_actions = ('generate_pdf_payments',)
 

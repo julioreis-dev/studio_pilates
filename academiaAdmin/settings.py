@@ -26,7 +26,7 @@ SECRET_KEY = 'n#8(pi2zl9d44k!lo2z46%zm-5%uagyo+=r-fy9muyw13+)ow@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://pilatesapp.herokuapp.com/']
 
 
 # Application definition
