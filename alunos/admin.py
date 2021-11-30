@@ -22,12 +22,29 @@ class PeopleAdmin(admin.ModelAdmin):
     People.day_schedules.short_description = 'Status Alocação'
 
 
-class TurmasAdmin(admin.ModelAdmin):
+class TurmasAdmin(DjangoObjectActions, admin.ModelAdmin):
     list_display = ('day', 'schedule', 'total')
     search_fields = ['day', 'schedule', 'alunos__name']
     filter_horizontal = ('alunos',)
 
     Turmas.total.short_description = 'Disponibilidade'
+
+    def generate_pdf_class(self, request, obj):
+        infos = obj.alunos.all()
+        template_path = 'reports/pdf_class.html'
+        context = {'infos': infos, 'obj': obj, 'schedule': now}
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = f'attachment; filename="{obj}.pdf"'
+        template = get_template(template_path)
+        html = template.render(context)
+        # create a pdf
+        pisa_status = pisa.CreatePDF(html, dest=response)
+        return HttpResponse('We had some errors <pre>' + html + '</pre>') if pisa_status.err else response
+
+    generate_pdf_class.label = 'Gerar Relatório'
+    generate_pdf_class.short_description = 'Clique para gerar o PDF do relatório desse aluno'
+
+    change_actions = ('generate_pdf_class',)
 
 
 class BillsAdmin(DjangoObjectActions, admin.ModelAdmin):

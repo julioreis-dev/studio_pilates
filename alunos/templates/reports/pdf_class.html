@@ -1,0 +1,60 @@
+
+<html>
+<head>
+  <title>{{ obj.boletim.name }}</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      font-size: 10px;
+    }
+    p {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .text-left {
+      text-align: left;
+    }
+    table, td, th {
+    border: 1px solid black;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th {
+        font-size: 12px;
+        height: 30px;
+    }
+    td {
+    font-size: 12px;
+    padding: 15px;
+    height: 80px;
+    vertical-align: bottom;
+    }
+  </style>
+</head>
+  <body>
+    <h1 class="text-center">Espaço Juliana Pessoa - Pilates & Fisioterapia Pélvica</h1>
+    <h1 class="text-center">Relação de alunos</h1>
+    <hr>
+    <h1>Turma: {{ obj.day }} - {{ obj.schedule }}</h1>
+      <table border="1">
+        <tr>
+          <th scope="col">Aluno</th>
+          <th scope="col">Assinatura</th>
+        </tr>
+      <tbody>
+      {% for info in infos %}
+        <tr>
+          <td class="text-center">{{ info.name|capfirst }}</td>
+          <td class="text-center"> </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+      </table>
+    <h1 class="text-right">{{ schedule }}.</h1>
+  </body>
+</html>
