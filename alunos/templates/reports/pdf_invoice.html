@@ -1,0 +1,44 @@
+
+<html>
+<head>
+  <title>{{ obj.boletim.name }}</title>
+  <style>
+    body {
+      background-color: #ffffff;
+      font-size: 10px;
+    }
+    p {
+      font-size: 16px;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .text-left {
+      text-align: left;
+    }
+
+  </style>
+</head>
+  <body>
+    <h1>RECIBO</h1>
+    <p><b>Nº: </b>{{ obj.id }}</p>
+    <p><b>Valor: </b>{{ obj.val }}</p>
+    <hr>
+    {% if obj.pay == True %}
+      <h1>
+        O estabelecimento Espaço Juliana Pessoa - Pilates & Fisioterapia Pélvica, declara para os devidos fins que o
+        cliente {{ obj.boletim }}, realizou o pagamento referente aos serviços prestados no mês de {{ obj.month }} de {{ obj.boletim.ano }}.
+      </h1>
+    {% else %}
+      <h1>
+        O estabelecimento Espaço Juliana Pessoa - Pilates & Fisioterapia Pélvica, declara para os devidos fins que o
+        cliente {{ obj.boletim }}, encontra-se inadimplente referente aos serviços prestados no mês de {{ obj.month }} de {{ obj.boletim.ano }}.
+      </h1>
+    {% endif %}
+    <br>
+    <h1 class="text-center">Rio de Janeiro, {{ schedule }}.</h1>
+    <hr>
+  </body>
+</html>

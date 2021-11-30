@@ -58,6 +58,35 @@ class BillsAdmin(DjangoObjectActions, admin.ModelAdmin):
     change_actions = ('generate_pdf',)
 
 
+class PaymentsAdmin(DjangoObjectActions, admin.ModelAdmin):
+    list_display = ('boletim', 'invoice', 'month', 'month_db')
+    search_fields = ('boletim__people__name', 'boletim__ano', 'month', 'id')
+
+    Payments.month_db.short_description = 'Ano'
+    Payments.invoice.short_description = 'Nº Recibo'
+
+    def generate_pdf_payments(self, request, obj):
+        template_path = 'reports/pdf_invoice.html'
+        context = {'obj': obj, 'schedule': now}
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = f'attachment; filename="{obj}.pdf"'
+        template = get_template(template_path)
+        html = template.render(context)
+        # create a pdf
+        pisa_status = pisa.CreatePDF(html, dest=response)
+
+        # if error then show some funy view
+        if pisa_status.err:
+            return HttpResponse('We had some errors <pre>' + html + '</pre>')
+        return response
+
+    generate_pdf_payments.label = 'Gerar Relatório'
+    generate_pdf_payments.short_description = 'Clique para gerar o PDF do relatório desse aluno'
+
+    change_actions = ('generate_pdf_payments',)
+
+
 admin.site.register(People, PeopleAdmin)
 admin.site.register(Turmas, TurmasAdmin)
 admin.site.register(Bills, BillsAdmin)
+admin.site.register(Payments, PaymentsAdmin)

@@ -18,6 +18,13 @@ class Payments(models.Model):
     month = models.CharField(choices=MONTH_CHOICE, max_length=10, default=default_month(), verbose_name='Mês')
     pay = models.BooleanField(verbose_name='Pago', default=False)
 
+    def month_db(self):
+        x = Payments.objects.filter(id=self.id).first()
+        return x.boletim.ano
+
+    def invoice(self):
+        return self.id
+
     def __str__(self):
         return f'{self.boletim}'
 
