@@ -9,7 +9,7 @@ class People(models.Model):
     date_insc = models.DateField(default=now, verbose_name='Data de inscrição', editable=True)
     profession = models.CharField(max_length=150, blank=True, verbose_name='Profissão')
     address = models.CharField(max_length=250, verbose_name='Endereço', null=True, blank=True)
-    email = models.EmailField(max_length=200, verbose_name='Email')
+    email = models.EmailField(max_length=200, verbose_name='Email', unique=True)
     tel1 = models.CharField(max_length=11, unique=True, verbose_name='Telefone (1)',
                             help_text="Telefone do aluno")
     tel2 = models.CharField(max_length=11, null=True, blank=True, unique=True, verbose_name='Telefone (2)',
