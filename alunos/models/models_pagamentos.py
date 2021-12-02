@@ -6,6 +6,10 @@ from alunos.models.models_boleto import Bills
 
 
 def default_month():
+    """
+    Função que retorna em portugês o nome do mês corrente
+    :return: str(current month)
+    """
     months = {1: 'janeiro', 2: 'fevereiro', 3: 'março', 4: 'abril', 5: 'maio', 6: 'junho', 7: 'julho', 8: 'agosto',
               9: 'setembro', 10: 'outubro', 11: 'novembro', 12: 'dezembro'}
     name_month = datetime.date.today().month
@@ -13,6 +17,9 @@ def default_month():
 
 
 class Payments(models.Model):
+    """
+    Classe model Payments para cadastro de pagamentos mensais realizados
+    """
     boletim = models.ForeignKey(Bills, blank=True, on_delete=models.CASCADE, null=True)
     val = models.DecimalField(max_digits=6, decimal_places=2, verbose_name='valor', default=0.00)
     month = models.CharField(choices=MONTH_CHOICE, max_length=10, default=default_month(), verbose_name='Mês')

@@ -18,9 +18,9 @@ class PeopleModelTest(TestCase):
 class PeopleModelTes2(TestCase):
     def setUp(self):
         self.aluno = mommy.make('People')
-        self.aluno.email = ''
+        self.aluno.email = None
 
     def test_email_validation(self):
-        attrstr = f'{self.aluno}'
-        self.assertEquals(str(self.aluno), attrstr)
+        aluno = People.objects.all()
+        self.assertIsNone(aluno)
 

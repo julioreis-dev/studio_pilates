@@ -4,6 +4,9 @@ from alunos.models import DAY_CHOICE, SCHEDULE_CHOICE, STATUS_CHOICE
 
 
 class People(models.Model):
+    """
+    Classe model para cadastro de pessoas usuárias da academia
+    """
     name = models.CharField(max_length=200, verbose_name='nome')
     birthday = models.DateField(default=now, verbose_name='Nascimento', editable=True)
     date_insc = models.DateField(default=now, verbose_name='Data de inscrição', editable=True)
@@ -20,6 +23,12 @@ class People(models.Model):
     status = models.CharField(choices=STATUS_CHOICE, default='ativo', max_length=7)
 
     def day_schedules(self):
+        """
+        Method: Metodo para verificar se o aluno esta alocado dentro da turma desejada ou não, alem de verificar se
+        o mesmo esta alocado em mais de uma turma e se esta inativo. O metodo é apresentado na tela de admin
+        relativo a aluno.
+        :return: str
+        """
         t = People.objects.filter(id=self.id)
         right_day = t[0].day
         right_sched = t[0].schedule
@@ -41,9 +50,16 @@ class People(models.Model):
                 return f'Alocado em {len(z)} horários'
 
     def __str__(self):
+        """
+        Retorna a associação do nome para identificar a instacia
+        :return: str
+        """
         return f'{self.name}'
 
     class Meta:
+        """
+        Classe para ordenar e contextualizar o admin
+        """
         ordering = ('-date_insc',)
         verbose_name = 'Aluno'
         verbose_name_plural = 'Alunos'
