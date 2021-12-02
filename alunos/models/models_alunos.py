@@ -27,7 +27,8 @@ class People(models.Model):
         Method: Metodo para verificar se o aluno esta alocado dentro da turma desejada ou não, alem de verificar se
         o mesmo esta alocado em mais de uma turma e se esta inativo. O metodo é apresentado na tela de admin
         relativo a aluno.
-        :return: str
+
+        :return: Situação do aluno
         """
         t = People.objects.filter(id=self.id)
         right_day = t[0].day
@@ -51,8 +52,9 @@ class People(models.Model):
 
     def __str__(self):
         """
-        Retorna a associação do nome para identificar a instacia
-        :return: str
+        Retorna a associação do field nome para identificar a instacia
+
+        :return: Identificação da instancia
         """
         return f'{self.name}'
 

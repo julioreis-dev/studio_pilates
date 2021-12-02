@@ -16,7 +16,8 @@ class Bills(models.Model):
     def __str__(self):
         """
         Retorna a associação do relacionamento People para identificar a instacia
-        :return: str
+
+        :return: Identificação da instancia
         """
         return f'{self.people}'
 

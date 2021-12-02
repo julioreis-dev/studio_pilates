@@ -14,7 +14,8 @@ class Turmas(models.Model):
     def total(self):
         """
         Method: Metodo para verificar a lotação permitida por aula. Total máximo permitido é 3 alunos por aula.
-        :return: str
+
+        :return: Numero de vagas disponível
         """
         number_student = self.alunos.count()
         disp = 3 - number_student
@@ -27,8 +28,9 @@ class Turmas(models.Model):
 
     def __str__(self):
         """
-        Retorna a associação do entre (day e schedule) para identificar a instacia
-        :return: str
+        Retorna a associação entre os fields (day e schedule) para identificar a instacia
+
+        :return: Identificação da instancia
         """
         return f'{self.day} / {self.schedule}'
 

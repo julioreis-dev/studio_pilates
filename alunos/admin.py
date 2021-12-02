@@ -76,10 +76,10 @@ class BillsAdmin(DjangoObjectActions, admin.ModelAdmin):
 
 
 class PaymentsAdmin(DjangoObjectActions, admin.ModelAdmin):
-    list_display = ('boletim', 'invoice', 'month', 'month_db', 'pay')
+    list_display = ('boletim', 'invoice', 'month', 'year_db', 'pay')
     search_fields = ('boletim__people__name', 'boletim__ano', 'month', 'id', 'pay')
 
-    Payments.month_db.short_description = 'Ano'
+    Payments.year_db.short_description = 'Ano'
     Payments.invoice.short_description = 'Nº Recibo'
 
     def generate_pdf_payments(self, request, obj):
