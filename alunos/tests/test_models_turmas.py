@@ -15,14 +15,13 @@ class TurmasModelTest(TestCase):
         attrstr = f'{self.turma.day} / {self.turma.schedule}'
         self.assertEquals(str(self.turma), attrstr)
 
-    def test_total(self):
-        number = self.turma.alunos.count()
-        response = f'Disponível {3-number} vaga(s)'
-        self.assertEquals(response, self.turma.total())
-
     def test_val_validation_default(self):
         turma = Turmas.objects.first()
         self.assertEqual(turma.day, 'segunda-feira')
+
+    def test_schedule_validation_default(self):
+        turma = Turmas.objects.first()
+        self.assertEqual(turma.schedule, 'm1')
 
     def test_val_validation_no_default(self):
         self.turma.day = 'quarta-feira'
@@ -35,3 +34,8 @@ class TurmasModelTest(TestCase):
         self.turma.save()
         turma = Turmas.objects.first()
         self.assertEqual(turma.schedule, 'm3')
+
+    def test_total(self):
+        number = self.turma.alunos.count()
+        response = f'Disponível {3 - number} vaga(s)'
+        self.assertEquals(response, self.turma.total())
