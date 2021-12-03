@@ -35,6 +35,9 @@ class Turmas(models.Model):
         return f'{self.day} / {self.schedule}'
 
     class Meta:
+        """
+        Classe para ordenar e contextualizar o admin
+        """
         ordering = ('day',)
         verbose_name = 'Turma'
         verbose_name_plural = 'Turmas'
