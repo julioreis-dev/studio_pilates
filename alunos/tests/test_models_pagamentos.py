@@ -1,6 +1,6 @@
 from decimal import Decimal
 from django.test import TestCase
-from alunos.models.models_pagamentos import Payments, default_month
+from pagamentos.models.models_pagamentos import Payments, default_month
 from model_mommy import mommy
 
 

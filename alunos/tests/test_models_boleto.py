@@ -1,5 +1,5 @@
 from django.test import TestCase
-from alunos.models.models_boleto import Bills
+from boletos.models.models_boleto import Bills
 from model_mommy import mommy
 import datetime
 

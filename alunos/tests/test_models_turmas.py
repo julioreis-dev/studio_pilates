@@ -1,5 +1,5 @@
 from django.test import TestCase
-from alunos.models.models_turmas import Turmas
+from turmas.models.models_turmas import Turmas
 from model_mommy import mommy
 
 

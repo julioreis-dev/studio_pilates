@@ -48,6 +48,3 @@ MONTH_CHOICE = (
 
 
 from .models_alunos import *
-from .models_turmas import *
-from .models_boleto import *
-from .models_pagamentos import *

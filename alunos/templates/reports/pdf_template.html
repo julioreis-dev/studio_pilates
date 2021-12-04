@@ -51,7 +51,7 @@
       {% for info in infos %}
         <tr>
           <td class="text-center">{{ info.month|capfirst }}</td>
-          <td class="text-center">{{ info.val }}</td>
+          <td class="text-center">R$ {{ info.val }}</td>
           {% if info.pay == False %}
           <td class="text-center">Pagamento não realizado</td>
           {% else %}

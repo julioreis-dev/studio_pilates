@@ -1,7 +1,7 @@
 import datetime
 from django.db import models
 from alunos.models import MONTH_CHOICE
-from alunos.models.models_boleto import Bills
+from boletos.models.models_boleto import Bills
 
 
 

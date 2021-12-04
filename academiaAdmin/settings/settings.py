@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'alunos',
+    'boletos',
+    'pagamentos',
+    'turmas',
     'django_object_actions',
 ]
 
