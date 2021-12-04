@@ -24,7 +24,8 @@ class TurmasAdmin(DjangoObjectActions, admin.ModelAdmin):
 
         :param request: request
         :param obj: Fields do models Turmas
-        :return: erro ou response
+
+        :return: erro ou a criação do conteúdo em PDF
         """
         infos = obj.alunos.all()
         template_path = 'reports/pdf_class.html'
