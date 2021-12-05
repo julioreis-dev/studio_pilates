@@ -6,6 +6,7 @@ from django.utils.timezone import now
 from xhtml2pdf import pisa
 from pagamentos.models.models_pagamentos import Payments
 from boletos.models.models_boleto import Bills
+from pagamentos.querys.query import extract
 
 
 class PaymentsInline(admin.TabularInline):
@@ -34,8 +35,9 @@ class BillsAdmin(DjangoObjectActions, admin.ModelAdmin):
         :return: erro ou response
         """
         infos = obj.payments_set.all()
+        extraction = extract(infos)
         template_path = 'reports/pdf_template.html'
-        context = {'infos': infos, 'obj': obj, 'schedule': now}
+        context = {'infos': infos, 'obj': obj, 'schedule': now, 'pago': extraction[0], 'devendo': extraction[1]}
         response = HttpResponse(content_type='application/pdf')
         response['Content-Disposition'] = f'attachment; filename="{obj}.pdf"'
         template = get_template(template_path)

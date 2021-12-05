@@ -28,7 +28,7 @@ class PaymentsAdmin(DjangoObjectActions, admin.ModelAdmin):
         template_path = 'reports/pdf_invoice.html'
         context = {'obj': obj, 'schedule': now}
         response = HttpResponse(content_type='application/pdf')
-        response['Content-Disposition'] = f'attachment; filename="{obj}.pdf"'
+        response['Content-Disposition'] = f'filename="{obj}.pdf"'
         template = get_template(template_path)
         html = template.render(context)
         # create a pdf

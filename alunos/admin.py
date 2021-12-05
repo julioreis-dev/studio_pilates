@@ -7,9 +7,9 @@ class PeopleAdmin(admin.ModelAdmin):
     Class de contextualização do admin para o model People
     """
     fieldsets = (
-        ('Dados Pessoais', {'fields': ('name', 'birthday','date_insc', 'profession', 'address', 'email', 'tel1',
-                                       'tel2', 'insta')}),
-        ('Horário Desejado', {'fields': ('day', 'schedule', 'status')}),
+        ('Dados Pessoais:', {'fields': ('name', 'birthday','date_insc', 'profession', 'address', 'email', 'tel1',
+                                       'tel2', 'insta', 'status')}),
+        ('Horário Desejado:', {'fields': ('day', 'schedule')}),
     )
     list_display = ('name', 'date_insc', 'email', 'day_schedules', 'status')
     search_fields = ('name', 'tel1', 'status')
