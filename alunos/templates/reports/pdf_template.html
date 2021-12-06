@@ -8,14 +8,17 @@
       font-size: 10px;
     }
     p {
-      text-align: justify;
-      text-justify: inter-word;
+      text-align: left;
+      font-size: 16px;
     }
     .text-center {
       text-align: center;
     }
     .text-left {
       text-align: left;
+    }
+    .text-right {
+      text-align: right;
     }
     table, td, th {
     border: 1px solid black;
@@ -38,7 +41,7 @@
 </head>
   <body>
     <h1 class="text-center">Espaço Juliana Pessoa - Pilates & Fisioterapia Pélvica</h1>
-    <h1 class="text-center">Relatório Financeiro do aluno(a) {{ obj.people }} referente ao ano de {{ obj.ano }}.</h1>
+    <h1 class="text-center">Extrato Financeiro do aluno(a) {{ obj.people }} referente ao ano de {{ obj.ano }}.</h1>
     <hr>
     <h1>Relação de Pagamentos:</h1>
       <table border="1">
@@ -63,9 +66,15 @@
       </table>
     <h1 class="text-right">Emitido em: {{ schedule }}.</h1>
     <br>
-    <h1 class="text-right">Extrato:</h1>
-    <h1>Pago: R$ {{ pago }}</h1>
-    <h1>Devendo: R$ {{ devendo }}</h1>
-
+    <h1 class="text-right">Resumo:</h1>
+    <h1 class="text-right">Pago: R$ {{ pago }}</h1>
+    <h1 class="text-right">a pagar: R$ {{ devendo }}</h1>
+    <h1 class="text-center">Informações gerais</h1>
+  {% if devendo == 0 %}
+    <p>O referido aluno não possui parcelas em atraso, relativo aos serviços contratados, até o presente momento.</p>
+  {% else %}
+    <p>O referido aluno possui o equivalente a R$ {{ devendo }} relativos a parcelas em atraso. Favor entrar em contato
+      com a administração para a quitação dos débitos informados. </p>
+  {% endif %}
   </body>
 </html>
