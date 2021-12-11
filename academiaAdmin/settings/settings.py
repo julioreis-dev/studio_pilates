@@ -139,7 +139,8 @@ CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 X_FRAME_OPTIONS = 'DENY'
 
-# SECURE_SSL_REDIRECT = True
+# comment during the development
+SECURE_SSL_REDIRECT = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 django_heroku.settings(locals())
