@@ -64,17 +64,17 @@
       {% endfor %}
       </tbody>
       </table>
-    <h1 class="text-right">Emitido em: {{ schedule }}.</h1>
     <br>
     <h1 class="text-right">Resumo:</h1>
     <h1 class="text-right">Pago: R$ {{ pago }}</h1>
     <h1 class="text-right">a pagar: R$ {{ devendo }}</h1>
     <h1 class="text-center">Informações gerais</h1>
+    <p>Com base no presente extrato que foi emitido em {{ schedule }}, informamos o seguinte:</p>
   {% if devendo == 0 %}
-    <p>O referido aluno não possui parcelas em atraso, relativo aos serviços contratados, até o presente momento.</p>
+    <p>O referido aluno não possui parcelas em atraso, relativo aos serviços contratados, até a presente data.</p>
   {% else %}
     <p>O referido aluno possui o equivalente a R$ {{ devendo }} relativo a parcelas em atraso. Favor entrar em contato
-      com a administração para a quitação dos débitos informados. </p>
+      com a administração para a quitação dos débitos informados.</p>
   {% endif %}
   </body>
 </html>
