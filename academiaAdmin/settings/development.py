@@ -1,3 +1,5 @@
+import dj_database_url
+
 from academiaAdmin.settings.settings import *
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -8,9 +10,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config()
 }
