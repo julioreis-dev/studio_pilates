@@ -38,7 +38,7 @@ class Turmas(models.Model):
         """
         Classe para ordenar e contextualizar o admin
         """
-        ordering = ('day',)
+        ordering = ('day', 'schedule')
         verbose_name = 'Turma'
         verbose_name_plural = 'Turmas'
         unique_together = ['day', 'schedule']
