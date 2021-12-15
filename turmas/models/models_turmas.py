@@ -41,3 +41,4 @@ class Turmas(models.Model):
         ordering = ('day',)
         verbose_name = 'Turma'
         verbose_name_plural = 'Turmas'
+        unique_together = ['day', 'schedule']

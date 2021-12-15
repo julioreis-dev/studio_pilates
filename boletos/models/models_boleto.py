@@ -27,3 +27,4 @@ class Bills(models.Model):
         """
         verbose_name = 'Boleto'
         verbose_name_plural = 'Boletos'
+        unique_together = ['people', 'ano']

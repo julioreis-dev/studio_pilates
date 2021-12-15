@@ -58,3 +58,4 @@ class Payments(models.Model):
         """
         verbose_name = 'Pagamento'
         verbose_name_plural = 'Pagamentos'
+        unique_together = ['boletim', 'month']
