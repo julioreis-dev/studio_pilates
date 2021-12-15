@@ -54,7 +54,7 @@ class Payments(models.Model):
 
     class Meta:
         """
-        Classe para ordenar e contextualizar o admin
+        Classe para ordenar e contextualizar admin
         """
         verbose_name = 'Pagamento'
         verbose_name_plural = 'Pagamentos'
